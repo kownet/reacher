@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Reacher.Notification.Pushover\Reacher.Notification.Pushover.csproj" />
+    <ProjectReference Include="..\Reacher.Storage.File.Json\Reacher.Storage.File.Json.csproj" />
   </ItemGroup>
 
 </Project>

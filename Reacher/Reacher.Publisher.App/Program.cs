@@ -1,7 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Reacher.Destination.Facebook;
 using Reacher.Publisher.App.DI;
+using Reacher.Shared.Utils;
+using Reacher.Storage.File.Json.Configuration;
 using System;
 using System.IO;
 
@@ -26,11 +29,12 @@ namespace Reacher.Publisher.App
 
                 var servicesProvider = DependencyProvider.Get(configuration);
 
-                servicesProvider.GetRequiredService<DestinationFacebookService>().Publish();
-            }
-            else
-            {
-
+                if(StorageFile.ConfigurationExists(
+                    servicesProvider.GetService<IOptions<StorageFileJsonConfiguration>>(),
+                    clientId))
+                {
+                    servicesProvider.GetRequiredService<DestinationFacebookService>().Publish();
+                }
             }
 
             NLog.LogManager.Shutdown();

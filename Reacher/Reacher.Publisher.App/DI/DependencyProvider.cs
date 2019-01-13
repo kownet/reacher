@@ -6,6 +6,8 @@ using Reacher.Destination.Facebook;
 using Reacher.Destination.Facebook.Configuration;
 using Reacher.Notification.Pushover;
 using Reacher.Notification.Pushover.Configuration;
+using Reacher.Storage.File.Json;
+using Reacher.Storage.File.Json.Configuration;
 using System;
 
 namespace Reacher.Publisher.App.DI
@@ -44,6 +46,15 @@ namespace Reacher.Publisher.App.DI
                 .Bind(opt));
 
             services.AddTransient<INotificationPushoverService, NotificationPushoverService>();
+            #endregion
+
+            #region Storages
+            services.Configure<StorageFileJsonConfiguration>(
+                opt => configurationRoot
+                .GetSection("storages:file_json")
+                .Bind(opt));
+
+            services.AddTransient<IStorageFileJsonService, StorageFileJsonService>();
             #endregion
 
             var serviceProvider = services.BuildServiceProvider();

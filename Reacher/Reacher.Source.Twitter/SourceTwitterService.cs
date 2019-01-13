@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using Reacher.Notification.Pushover;
 using Reacher.Source.Twitter.Configuration;
+using Reacher.Storage.File.Json;
 
 namespace Reacher.Source.Twitter
 {
@@ -10,15 +11,18 @@ namespace Reacher.Source.Twitter
         private readonly IOptions<SourceTwitterConfiguration> _configuration;
         private readonly ILogger<SourceTwitterService> _logger;
         private readonly INotificationPushoverService _pushoverNotification;
+        private readonly IStorageFileJsonService _storageFileJson;
 
         public SourceTwitterService(
             IOptions<SourceTwitterConfiguration> configuration,
             ILogger<SourceTwitterService> logger,
-            INotificationPushoverService pushoverNotification)
+            INotificationPushoverService pushoverNotification,
+            IStorageFileJsonService storageFileJson)
         {
             _configuration = configuration;
             _logger = logger;
             _pushoverNotification = pushoverNotification;
+            _storageFileJson = storageFileJson;
         }
 
         public void Collect()
