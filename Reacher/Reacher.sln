@@ -3,21 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reacher.App", "Reacher.App\Reacher.App.csproj", "{06FC4F26-AE21-42A0-A1BD-A044FDBC10AB}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{30893BA2-F908-425C-A03E-BC636942B8A5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reacher.Source.Twitter", "Reacher.Source.Twitter\Reacher.Source.Twitter.csproj", "{9E1FD7D5-E42F-4E0D-A74D-993F2FE5946D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Destinations", "Destinations", "{7DCCC3FF-2BFB-430D-BAAC-92B83E3E2657}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reacher.Destination.Facebook", "Reacher.Destination.Facebook\Reacher.Destination.Facebook.csproj", "{7970EE71-1B35-4DE5-BB05-2D2717BCBDDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reacher.Destination.Facebook", "Reacher.Destination.Facebook\Reacher.Destination.Facebook.csproj", "{7970EE71-1B35-4DE5-BB05-2D2717BCBDDE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notifications", "Notifications", "{B497FEAD-EBD6-44B8-97F0-5C5611162914}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reacher.Notification.Pushover", "Reacher.Notification.Pushover\Reacher.Notification.Pushover.csproj", "{6F5D7AE2-197C-424B-A96C-FD045242D3FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reacher.Notification.Pushover", "Reacher.Notification.Pushover\Reacher.Notification.Pushover.csproj", "{6F5D7AE2-197C-424B-A96C-FD045242D3FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reacher.Notification.Email", "Reacher.Notification.Email\Reacher.Notification.Email.csproj", "{83763A2D-E942-4C78-9326-37BEFB9FAB80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reacher.Notification.Email", "Reacher.Notification.Email\Reacher.Notification.Email.csproj", "{83763A2D-E942-4C78-9326-37BEFB9FAB80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reacher.Collector.App", "Reacher.Collector.App\Reacher.Collector.App.csproj", "{C64459B6-3EB2-4AC2-BF2B-D1F28D273BCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reacher.Publisher.App", "Reacher.Publisher.App\Reacher.Publisher.App.csproj", "{01677EC1-2E31-4501-A89B-4396DFE95488}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reacher.Source.YouTube", "Reacher.Source.YouTube\Reacher.Source.YouTube.csproj", "{874E3C10-B1BD-468D-A23F-81C1F94D9128}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storages", "Storages", "{B8644AA2-C031-4564-BC12-698404B06E04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reacher.Storage.File.Json", "Reacher.Storage.File.Json\Reacher.Storage.File.Json.csproj", "{280709A2-C344-4123-BD66-D76459C2554F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +33,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{06FC4F26-AE21-42A0-A1BD-A044FDBC10AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06FC4F26-AE21-42A0-A1BD-A044FDBC10AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06FC4F26-AE21-42A0-A1BD-A044FDBC10AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06FC4F26-AE21-42A0-A1BD-A044FDBC10AB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9E1FD7D5-E42F-4E0D-A74D-993F2FE5946D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9E1FD7D5-E42F-4E0D-A74D-993F2FE5946D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E1FD7D5-E42F-4E0D-A74D-993F2FE5946D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +49,22 @@ Global
 		{83763A2D-E942-4C78-9326-37BEFB9FAB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83763A2D-E942-4C78-9326-37BEFB9FAB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83763A2D-E942-4C78-9326-37BEFB9FAB80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C64459B6-3EB2-4AC2-BF2B-D1F28D273BCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C64459B6-3EB2-4AC2-BF2B-D1F28D273BCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C64459B6-3EB2-4AC2-BF2B-D1F28D273BCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C64459B6-3EB2-4AC2-BF2B-D1F28D273BCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01677EC1-2E31-4501-A89B-4396DFE95488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01677EC1-2E31-4501-A89B-4396DFE95488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01677EC1-2E31-4501-A89B-4396DFE95488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01677EC1-2E31-4501-A89B-4396DFE95488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{874E3C10-B1BD-468D-A23F-81C1F94D9128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{874E3C10-B1BD-468D-A23F-81C1F94D9128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{874E3C10-B1BD-468D-A23F-81C1F94D9128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{874E3C10-B1BD-468D-A23F-81C1F94D9128}.Release|Any CPU.Build.0 = Release|Any CPU
+		{280709A2-C344-4123-BD66-D76459C2554F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{280709A2-C344-4123-BD66-D76459C2554F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{280709A2-C344-4123-BD66-D76459C2554F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{280709A2-C344-4123-BD66-D76459C2554F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +74,8 @@ Global
 		{7970EE71-1B35-4DE5-BB05-2D2717BCBDDE} = {7DCCC3FF-2BFB-430D-BAAC-92B83E3E2657}
 		{6F5D7AE2-197C-424B-A96C-FD045242D3FC} = {B497FEAD-EBD6-44B8-97F0-5C5611162914}
 		{83763A2D-E942-4C78-9326-37BEFB9FAB80} = {B497FEAD-EBD6-44B8-97F0-5C5611162914}
+		{874E3C10-B1BD-468D-A23F-81C1F94D9128} = {30893BA2-F908-425C-A03E-BC636942B8A5}
+		{280709A2-C344-4123-BD66-D76459C2554F} = {B8644AA2-C031-4564-BC12-698404B06E04}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A699CF36-FA8B-44BD-AC00-4FB4F4A07A84}
