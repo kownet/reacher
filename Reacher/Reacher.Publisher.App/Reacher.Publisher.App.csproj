@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Reacher.Destination.Facebook\Reacher.Destination.Facebook.csproj" />
+    <ProjectReference Include="..\Reacher.Notification.Pushover\Reacher.Notification.Pushover.csproj" />
   </ItemGroup>
 
   <ItemGroup>

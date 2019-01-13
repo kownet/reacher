@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Reacher.Notification.Pushover\Reacher.Notification.Pushover.csproj" />
     <ProjectReference Include="..\Reacher.Source.Twitter\Reacher.Source.Twitter.csproj" />
   </ItemGroup>
 

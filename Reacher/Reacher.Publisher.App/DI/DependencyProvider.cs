@@ -4,6 +4,8 @@ using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using Reacher.Destination.Facebook;
 using Reacher.Destination.Facebook.Configuration;
+using Reacher.Notification.Pushover;
+using Reacher.Notification.Pushover.Configuration;
 using System;
 
 namespace Reacher.Publisher.App.DI
@@ -14,6 +16,7 @@ namespace Reacher.Publisher.App.DI
         {
             var services = new ServiceCollection();
 
+            #region Logging
             services.AddLogging(builder =>
             {
                 builder.SetMinimumLevel(LogLevel.Trace);
@@ -23,13 +26,25 @@ namespace Reacher.Publisher.App.DI
                     CaptureMessageProperties = true
                 });
             });
+            #endregion
 
+            #region Destinations
             services.Configure<DestinationFacebookConfiguration>(
                 opt => configurationRoot
                 .GetSection("destinations:facebook")
                 .Bind(opt));
 
             services.AddTransient<DestinationFacebookService>();
+            #endregion
+
+            #region Notifications
+            services.Configure<NotificationPushoverConfiguration>(
+                opt => configurationRoot
+                .GetSection("notifications:pushover")
+                .Bind(opt));
+
+            services.AddTransient<INotificationPushoverService, NotificationPushoverService>();
+            #endregion
 
             var serviceProvider = services.BuildServiceProvider();
 
