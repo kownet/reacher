@@ -27,9 +27,9 @@ namespace Reacher.Publisher.App
 
                 var configuration = builder.Build();
 
-                var servicesProvider = DependencyProvider.Get(configuration);
+                var servicesProvider = DependencyProvider.Get(configuration, clientId);
 
-                if(StorageFile.ConfigurationExists(
+                if(ConfigurationExists(
                     servicesProvider.GetService<IOptions<StorageFileJsonConfiguration>>(),
                     clientId))
                 {
@@ -41,5 +41,8 @@ namespace Reacher.Publisher.App
 
             Console.ReadLine();
         }
+
+        static bool ConfigurationExists(IOptions<StorageFileJsonConfiguration> jsonStorageConfiguration, string clientId)
+            => File.Exists(Path.Combine(jsonStorageConfiguration.Value.Path, StorageFile.Name(clientId)));
     }
 }

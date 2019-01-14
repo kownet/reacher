@@ -28,9 +28,9 @@ namespace Reacher.Collector.App
 
                 var configuration = builder.Build();
 
-                var servicesProvider = DependencyProvider.Get(configuration);
+                var servicesProvider = DependencyProvider.Get(configuration, clientId);
 
-                StorageFile.Create(
+                Create(
                     servicesProvider.GetService<IStorageFileJsonService>(),
                     servicesProvider.GetService<IOptions<StorageFileJsonConfiguration>>(),
                     clientId);
@@ -41,6 +41,26 @@ namespace Reacher.Collector.App
             NLog.LogManager.Shutdown();
 
             Console.ReadLine();
+        }
+
+        static void Create(IStorageFileJsonService jsonStorage, IOptions<StorageFileJsonConfiguration> jsonStorageConfiguration, string clientId)
+        {
+            if (jsonStorage != null && jsonStorageConfiguration != null)
+            {
+                var jsonStorageDir = Path.Combine(jsonStorageConfiguration.Value.Path);
+
+                if (!Directory.Exists(jsonStorageDir))
+                {
+                    Directory.CreateDirectory(jsonStorageDir);
+                }
+
+                var jsonStorageFile = Path.Combine(jsonStorageConfiguration.Value.Path, StorageFile.Name(clientId));
+
+                if (!File.Exists(jsonStorageFile))
+                {
+                    File.Create(jsonStorageFile).Dispose();
+                }
+            }
         }
     }
 }

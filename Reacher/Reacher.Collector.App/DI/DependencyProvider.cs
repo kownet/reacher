@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using Reacher.Notification.Pushover;
 using Reacher.Notification.Pushover.Configuration;
+using Reacher.Shared.Common;
 using Reacher.Source.Twitter;
 using Reacher.Source.Twitter.Configuration;
 using Reacher.Storage.File.Json;
@@ -14,9 +15,13 @@ namespace Reacher.Collector.App.DI
 {
     public static class DependencyProvider
     {
-        public static IServiceProvider Get(IConfigurationRoot configurationRoot)
+        public static IServiceProvider Get(IConfigurationRoot configurationRoot, string clientId)
         {
             var services = new ServiceCollection();
+
+            #region Client
+            services.AddTransient<IClientProvider>(s => new ClientProvider(clientId));
+            #endregion
 
             #region Logging
             services.AddLogging(builder =>

@@ -6,6 +6,7 @@ using Reacher.Destination.Facebook;
 using Reacher.Destination.Facebook.Configuration;
 using Reacher.Notification.Pushover;
 using Reacher.Notification.Pushover.Configuration;
+using Reacher.Shared.Common;
 using Reacher.Storage.File.Json;
 using Reacher.Storage.File.Json.Configuration;
 using System;
@@ -14,9 +15,13 @@ namespace Reacher.Publisher.App.DI
 {
     public static class DependencyProvider
     {
-        public static IServiceProvider Get(IConfigurationRoot configurationRoot)
+        public static IServiceProvider Get(IConfigurationRoot configurationRoot, string clientId)
         {
             var services = new ServiceCollection();
+
+            #region Client
+            services.AddTransient<IClientProvider>(s => new ClientProvider(clientId));
+            #endregion
 
             #region Logging
             services.AddLogging(builder =>

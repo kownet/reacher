@@ -7,5 +7,6 @@ namespace Reacher.Storage.File.Json
     {
         void Save(Content content);
         IEnumerable<Content> GetAll();
+        Content GetLatest();
     }
 }

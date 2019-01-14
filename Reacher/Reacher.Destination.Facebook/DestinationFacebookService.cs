@@ -2,7 +2,9 @@
 using Microsoft.Extensions.Options;
 using Reacher.Destination.Facebook.Configuration;
 using Reacher.Notification.Pushover;
+using Reacher.Shared.Utils;
 using Reacher.Storage.File.Json;
+using System;
 
 namespace Reacher.Destination.Facebook
 {
@@ -27,10 +29,36 @@ namespace Reacher.Destination.Facebook
 
         public void Publish()
         {
-            var message = $"Fanpage to publish: {_configuration.Value.FanPage}";
+            try
+            {
+                var latestContent = _storageFileJson.GetLatest();
 
-            _logger.LogInformation(message);
-            _pushoverNotification.Send("Publisher Facebook Destination", message);
+                if(latestContent != null)
+                {
+
+                    var message = $"{latestContent.ToString()} published.";
+
+                    _logger.LogInformation(message);
+
+                    _pushoverNotification.Send(Titles.PublisherFacebookHeader, message);
+                }
+                else
+                {
+                    var message = $"There is no content to publish.";
+
+                    _logger.LogInformation(message);
+
+                    _pushoverNotification.Send(Titles.PublisherFacebookHeader, message);
+                }
+            }
+            catch (Exception)
+            {
+                var message = $"Latest content not published.";
+
+                _logger.LogError(message);
+
+                _pushoverNotification.Send(Titles.PublisherFacebookHeader, message);
+            }
         }
     }
 }
