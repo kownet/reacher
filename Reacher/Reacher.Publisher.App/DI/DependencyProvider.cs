@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using Reacher.Destination.Facebook;
 using Reacher.Destination.Facebook.Configuration;
+using Reacher.Facebook.Api;
 using Reacher.Notification.Pushover;
 using Reacher.Notification.Pushover.Configuration;
 using Reacher.Shared.Common;
@@ -33,6 +34,11 @@ namespace Reacher.Publisher.App.DI
                     CaptureMessageProperties = true
                 });
             });
+            #endregion
+
+            #region APIs
+            services.AddTransient<IFacebookClient, FacebookClient>();
+            services.AddTransient<IFacebookService, FacebookService>();
             #endregion
 
             #region Destinations

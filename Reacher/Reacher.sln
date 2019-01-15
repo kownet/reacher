@@ -27,9 +27,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storages", "Storages", "{B8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reacher.Storage.File.Json", "Reacher.Storage.File.Json\Reacher.Storage.File.Json.csproj", "{280709A2-C344-4123-BD66-D76459C2554F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reacher.Storage.Data", "Reacher.Storage.Data\Reacher.Storage.Data.csproj", "{C527F40A-A56A-4417-A5F6-0399794C82B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reacher.Storage.Data", "Reacher.Storage.Data\Reacher.Storage.Data.csproj", "{C527F40A-A56A-4417-A5F6-0399794C82B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reacher.Shared", "Reacher.Shared\Reacher.Shared.csproj", "{7F296AA2-9BFE-4847-824D-4AF59368A164}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reacher.Shared", "Reacher.Shared\Reacher.Shared.csproj", "{7F296AA2-9BFE-4847-824D-4AF59368A164}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{8849EC35-6498-453A-B374-E2D8DE9C6191}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reacher.Facebook.Api", "Reacher.Facebook.Api\Reacher.Facebook.Api.csproj", "{747E4909-399B-495D-AFD1-C68F50980A78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +81,10 @@ Global
 		{7F296AA2-9BFE-4847-824D-4AF59368A164}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F296AA2-9BFE-4847-824D-4AF59368A164}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F296AA2-9BFE-4847-824D-4AF59368A164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{747E4909-399B-495D-AFD1-C68F50980A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{747E4909-399B-495D-AFD1-C68F50980A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{747E4909-399B-495D-AFD1-C68F50980A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{747E4909-399B-495D-AFD1-C68F50980A78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +97,7 @@ Global
 		{874E3C10-B1BD-468D-A23F-81C1F94D9128} = {30893BA2-F908-425C-A03E-BC636942B8A5}
 		{280709A2-C344-4123-BD66-D76459C2554F} = {B8644AA2-C031-4564-BC12-698404B06E04}
 		{C527F40A-A56A-4417-A5F6-0399794C82B4} = {B8644AA2-C031-4564-BC12-698404B06E04}
+		{747E4909-399B-495D-AFD1-C68F50980A78} = {8849EC35-6498-453A-B374-E2D8DE9C6191}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A699CF36-FA8B-44BD-AC00-4FB4F4A07A84}

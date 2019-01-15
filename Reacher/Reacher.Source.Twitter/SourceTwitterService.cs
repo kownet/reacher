@@ -7,6 +7,7 @@ using Reacher.Storage.Data.Models;
 using Reacher.Storage.File.Json;
 using System;
 using System.Linq;
+using Tweetinvi;
 
 namespace Reacher.Source.Twitter
 {
@@ -32,6 +33,10 @@ namespace Reacher.Source.Twitter
         public void Collect()
         {
             var newContent = new Content("test-id", "test-message");
+
+            Auth.CreateCredentials("", "", "", "");
+
+            var users = Search.SearchUsers(_configuration.Value.Accounts.First());
 
             try
             {
