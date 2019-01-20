@@ -39,8 +39,6 @@ namespace Reacher.Collector.App
             }
 
             NLog.LogManager.Shutdown();
-
-            Console.ReadLine();
         }
 
         static void Create(IStorageFileJsonService jsonStorage, IOptions<StorageFileJsonConfiguration> jsonStorageConfiguration, string clientId)

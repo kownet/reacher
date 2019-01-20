@@ -1,13 +1,17 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Reacher.Notification.Pushover;
+using Reacher.Shared.Extensions;
 using Reacher.Shared.Utils;
 using Reacher.Source.Twitter.Configuration;
 using Reacher.Storage.Data.Models;
 using Reacher.Storage.File.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Tweetinvi;
+using Tweetinvi.Models;
+using Tweetinvi.Parameters;
 
 namespace Reacher.Source.Twitter
 {
@@ -17,6 +21,8 @@ namespace Reacher.Source.Twitter
         private readonly ILogger<SourceTwitterService> _logger;
         private readonly INotificationPushoverService _pushoverNotification;
         private readonly IStorageFileJsonService _storageFileJson;
+
+        private readonly ITwitterCredentials _twitterCredentials; 
 
         public SourceTwitterService(
             IOptions<SourceTwitterConfiguration> configuration,
@@ -28,15 +34,30 @@ namespace Reacher.Source.Twitter
             _logger = logger;
             _pushoverNotification = pushoverNotification;
             _storageFileJson = storageFileJson;
+
+            _twitterCredentials = Auth.CreateCredentials(
+                _configuration.Value.AccessKeys.ConsumerKey,
+                _configuration.Value.AccessKeys.ConsumerSecret,
+                _configuration.Value.AccessKeys.UserAccessToken,
+                _configuration.Value.AccessKeys.UserAccessSecret);
         }
 
         public void Collect()
         {
-            var newContent = new Content("test-id", "test-message");
+            var newContent = new Content();
 
-            Auth.CreateCredentials("", "", "", "");
+            Auth.ExecuteOperationWithCredentials(_twitterCredentials, () =>
+            {
+                var timeline = Timeline.GetUserTimeline(_configuration.Value.Accounts.First());
 
-            var users = Search.SearchUsers(_configuration.Value.Accounts.First());
+                if(timeline.AnyAndNotNull())
+                {
+                    var firstTweet = timeline.First();
+
+                    newContent.Id = firstTweet.IdStr;
+                    newContent.Message = firstTweet.Text;
+                }
+            });
 
             try
             {
@@ -70,13 +91,16 @@ namespace Reacher.Source.Twitter
 
         private void Store(Content newContent)
         {
-            _storageFileJson.Save(newContent);
+            if(newContent.IsProvided)
+            {
+                _storageFileJson.Save(newContent);
 
-            var message = $"{newContent.ToString()} stored for publish.";
+                var message = $"{newContent.ToString()} stored for publish.";
 
-            _logger.LogInformation(message);
+                _logger.LogInformation(message);
 
-            _pushoverNotification.Send(Titles.CollectorTwitterHeader, message);
+                _pushoverNotification.Send(Titles.CollectorTwitterHeader, message);
+            }
         }
     }
 }
